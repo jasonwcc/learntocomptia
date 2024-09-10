@@ -1,0 +1,189 @@
+LAN (Local Area Network)
+- Infrastructure team
+- Point-to-Point topology
+  : PC/Server to SWITCH
+  : Router to Router
+  : Switch to Switch
+- Star topology
+  : middle use hub/switch/bridge
+vs
+WAN (Wide Area Network)
+- subscribe to Service Provider(SP)
+- monthly/yearly bill
+- Point-to-Point topology
+  : Frame-Relay
+  : ATM
+  : PPP
+- Hub and Spoke topology
+  : Routers
+  : connect branch offices to HQ
+- Partial MESH topology
+  : some branches connect to HQ
+- Full MESH topology
+  : every branch connect to every branch
+    as well as to HQ
+
+
+ASCII
+vs
+EBCIDIC
+
+802.11AC = WIFI 5
+802.11AX = WIFI 6
+
+ARP 
+- address resolution protocol
+- resolve IP into MAC
+
+Data Link (L2)
+- MAC address (physical address)
+- unique globally, never change
+- 48 bits
+- engine chassis number
+
+Network (L3)
+- IP address (logical address)
+- unique over LAN/subnet
+- can keep changing
+- car number plate
+
+Bridge
+- stop R&D
+- 4/8/12
+vs
+Switch
+- L2 network appliance/device
+- can understand/capture MAC
+- do not care about IP
+- Configure IP as remote management 
+- Managed (cisco, hwa wei, juniper, zte, aruba, arista networkvs )
+Unmanaged(TP-Link) 
+- Ethernet / STAR topology
+- uses CSMA/CD (zero chances collision)
+vs
+Hub
+- L1 network appliance/device
+- dummy network appliance
+- do not understand anything(MAC/IP)
+- usually is half duplex/10Mb
+- share bandwidth
+- Ethernet / STAR topology
+- uses CSMA/CD (execute backoff algorithm when there is collision)
+ : 2^n
+
+
+vs
+Bridge
+
+
+
+Router
+- routing (VPN, hybrid, interconnect on-prem to cloud)
+- network address translation / NAT-ting
+  --> translating private IP to public IP
+
+Standard Ethernet frame MTU : 1500 bytes
+Jumbo Ethernet frame MTU : 9000 bytes
+- FCoE 
+
+
+Binary - Base 2
+- 0 1
+
+Decimal - Base 10
+- 0 to 9
+
+Octal - Base 8
+- 0 to 7
+
+Hexadecimal - Base 16
+- 0 to 9, a to f
+
+VPN
+- virtual private network
+- connecting two private network via public(internet) network
+- 15GB/s
+
+Hybrid 
+- VPN/private connection use Fibre optics
+- 100/200 GB/s
+- MY must go thru TIME
+
+2pm resume
+
+
+bandwidth = throughput = lanes
+- 10mb/s 100mb/s 1gb/s 2.5gb 
+- 10gb/s 25gb/s 40gb/s 100gb/s 
+- 800gb/s
+
+speed / GHz MHz 
+CAT 7
+CAT 8 2GHz / 40m / 40GB/s
+
+
+Single mode fibre
+- long far
+- single application
+- interconnect two DC / site
+Multi mode fibre
+- multiple application
+- short distance
+- case use: within  DC
+
+TX + 
+TX -
+RX +
+RX -
+
+
+Straight thru cable
+- PC to Switch/Hub
+- Server to Switch/Hub
+- Router to Switch/Hub
+Cross over cable
+- PC to PC
+- Server to Server
+- Router to Router
+- Switch to Switch
+- Switch to Hub
+- Router to PC/Server
+Roll over cable = Console cable
+
+
+auto-negotiate MDI / MDI-X
+
+speed 10/100/1000
+
+duplex half / full
+
+Cisco Discovery Protocol 
+(CDP)
+
+Link Layer Discovery Protocol
+(LLDP)
+
+Switch has MAC address table
+1. Learn MAC address received from PC/Server/Router and
+   map to port number
+2. Flood out to all ports except original port 
+3. Filter and forward direct to known destination
+
+
+
+Cisco
+ethernet0/0 - 10 Mb/s
+FastEthernet0/0 - 100Mb/s
+GigaEthernet0/0 - 1000Mb/s
+
+copy run start
+copy start run
+
+show start
+show run
+
+https://github.com/jasonwcc/learntocomptia
+
+
+
+
