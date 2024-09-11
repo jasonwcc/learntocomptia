@@ -185,5 +185,411 @@ show run
 https://github.com/jasonwcc/learntocomptia
 
 
+IPv4
+- Unicast
+- Multicast (game, video, audio streaming, collaboration
+- Broadcast (ARP, DHCP, NetBIOS - File/Print)
+- Anycast (Configure Global LB)
+IPv6
+- Unicast
+- Multicast
+- Anycast
 
+
+
+Pc1 
+- 192.168.100.1 -->  
+- 255.255.240.0 --> 
+Pc2 
+- 192.168.200.2
+- 255.255.240.0
+
+- same network then they can communicate
+directly without going thru gateway/router
+- different network then they must communicate via
+gateway/router
+
+
+Find network ID of PC1 and PC2
+PC1 
+
+IPv4 
+- 32 bits
+- 2^32 = 4 billion address 0.0.0.0 - 255.255.255.255
+- reservation:
+  0.x.x.x (16 777 214 number of hosts)
+  subnet - 2 
+- Private IP CANNOT route direct to Internet
+- 127.x.x.x for testing/development/loopback
+
+1990's
+
+Internet - by DARPA 
+A 1.x.x.x - 126.255.255.254
+B 128.0.0.1 - 191.255.255.254
+C 192.0.0.1 - 223.255.255.254
+D 224.0.0.1 - 239.255.255.254 multicast
+E reserved for future
+
+Subnetting
+- break big network into smaller subnet
+- borrowing bits from client and give to network
+
+VLSM
+- multiple subnetting
+
+
+/25n (7c)
+8n.8n.8n.1n 7c
+/27n (5c)
+8n.8n.8n.3n 5c
+/28n (4c)
+8n.8n.8n.4n 4c
+/30n (2c)
+8n.8n.8n.6n 2c
+
+198.51.100.192/28n
+8n.8n.8n.4n 4c
+192 = 1100 0000 
+207  = 1100 1111
+
+PC wants to obtain IPv from DHCP
+- src ip address: 0.0.0.0
+- dest ip address : 255.255.255.255
+- 127.0.0.1
+PC wants to obtain IPv6 from DHCP
+- src ip address: ::
+- ::1
+
+Dynamic Routing PRotocol
+1. RIP
+2. EIGRP (Cisco propietory)
+3. OSPF (Multi-vendor)
+4. IS-IS (more complex, least use)
+5. BGP
+
+- Interior (within enterprise/organization network)
+   use dynamic rp : 1-4
+- Exterior (connection to SP/CSP/ISP)
+   use BGP
+
+
+NAT - translate private IP to public IP
+
+
+Dynamic NAT
+- multiple public IP configured into a pool
+- ACL created with permission  to use the pool
+Mon
+192.168.0.1 == 202.0.0.1
+192.168.0.2 == 202.0.0.2
+Tue
+192.168.0.2 == 202.0.0.1
+193.168.0.3 == 202.0.0.2
+
+Static NAT
+- one public assign to one private
+- XXX == 202.0.0.1
+- 192.168.0.2 == 202.0.0.2
+- 192.168.0.3
+- case use: Port Forwarding (hosting local servers)
+
+Port Address Translation (PAT)
+- 1 public IP map to many/multiple private IP, map to port number
+
+
+int fa0/0
+   no  shut
+int fa0/0.1
+   encapsulation dot1q 10
+int fa0/0.2
+   encapsulation dot1q 20
+
+8
+/27  8.8.8.3n 5c 255.255.255.224
+/19  8.8.3   255.255.224.0
+255.255.255.0    =   /23
+255.255.254.0
+
+examtopics n10-008
+
+
+port number
+- 16 bits
+- 0 to 65535
+
+PC/Client 		---> 	Server (80:www , 143:mail)
+source-ip:source-port		destination-ip:destination-port
+192.168.1.1:44711		192.168.1.254:80
+192.168.1.1:39393		192.168.1.254:143	
+192.168.1.2:44444		192.168.1.254:80
+192.168.1.2:55555		192.168.1.254:80
+192.168.1.2:61111		192.168.1.254:143
+
+
+TCP
+- stateful
+- reliable by using acknowledge and sequencing numbers
+- connection-oriented by using 3-ways handshake
+vs
+UDP
+- stateless
+- unreliable
+- connection-less
+- less overhead (speed)
+
+
+
+Sequence number and Ack number
+******************************
+frame1:10byte
+- Sequence number: 10
+
+frame2:5byte
+- ack number: 11
+		
+frame3:100byte
+- Sequence number: 110
+
+frame4:105byte
+- ack number: 111
+
+
+Try this command
+1. netstat -an
+2. netstat -rn
+3. netstat -bn
+4. netstat -sn
+5. linux/MAC : netstat -in 
+
+DORA
+
+172.16.0.0 
+255.255.0.0
+8n.8n.8c.8c
+2^16c-2 = 65534
+
+192.168.1.0
+255.255.255.0
+8n.8n.8n.8c
+2^8c-2= 254
+
+Windows ME/95
+- first obtain IP from DHCP
+- IF DHCP down, these client won't obtain ip
+  -- 0.0.0.0
+
+Windows 98
+- APIPA was introduced by Microsoft
+- IF DHCP down, these client self configured
+  - 169.254.x.y
+  - within same subnet
+
+Netapp
+Nutanix
+cloud provider
+bgp
+
+
+FE80::<eui-64>
+- link-local
+  - within same subnet
+
+Windows randomly configure EUI-64
+
+VMnet1
+0250:56ff:fec0:1%21
+00-50-56-C0-00-08 > 0250:56ff:fec0:8%9
+2C-0D-A7-D7-0A-05 > 2e0d:a7ff:fed7:0a05%18
+
+MAC-address
+2C0DA7D70A05 
+
+insert ff:fe , MAC address is 48 bits, expand it to 64 bits
+2C0D:A7ff:feD7:0A05
+
+toggle bit 7th 
+2C --> 0010 1110 --> 2E
+2E0D:A7ff:feD7:0A05
+
+https://facebook.com.
+https://mail.yahoo.com.
+http://www.jpj.gov.my --> IP
+
+DNS
+- resolve FQDN into IP
+- FQDN : fully qualified domain name = hostname+domainname
+
+DNS Server1 - authoritative
+- zone1 (trainocate.com)
+  server1.trainocate.com IN SOA
+  server1.trainocate.com IN A   192.168.0.100
+  pc1.trainocate.com IN  A 192.168.0.1
+  pc2.trainocate.com IN  A 192.168.0.5
+  pc2.trainocate.com IN  AAAA fe80::1111:1112
+- zone2 (quintegral.com)
+  pc3.quintegral.com IN  A 192.168.0.3
+
+DNS Server2
+- zone3 (abc.com)
+- zone4 (jason.com.my)
+
+
+maybank2u.com.my
+rhbgroup.com.my --> serverIP 192.168.0.1
+
+203.188.0.133
+
+DDOS
+
+http://
+- clear text / plain text
+https://
+- http + TLS
+- encrypted message / confidentiality
+
+hashing
+- password is hashed
+- one way 
+vs
+encryption
+- data is encrypted over network
+- data is encrypted at rest (disk)
+- can decrypt
+
+abcd1234 --> ASD12321asdas!@#21asd
+********
+512 bits 
+128 bits 340 36'0s
+129
+
+
+second
+milisecond
+microsecond
+nanosecond
+
+nano-tech
+
+Microsoft Windows client/server
+- SMB (protocol) embassy
+- CIFS (share file system) AirAsia / MAS
+
+Linux
+- samba connect to Windows SMB
+
+Windows 
+- Service for Unix/Linux connect to Linux NFS
+
+NAS
+- Storage Server
+- pre-configured NFS+CIFS
+- NetApp , Synology , TrueNAS , FileNAS
+
+MySQL vs MS SQL vs Oracle 12c, 22c
+
+IBM 
+QUILL
+
+
+RDBMS = SQL = Structural DB
+- column, rows
+- strict design
+- schemaful
+- establish relationship between tables
+- enable advanced/complex multi-table query
+vs
+NoSQL = Unstructural DB
+- schemaless design
+- wide-columns
+- cannot establish relationship
+- Flexible design
+- easily scale out/up
+
+BCnDR
+- business continuity
+- DC > DR (disaster recovery)
+- economically feasible
+
+
+Google DNS
+- 100% HA
+- 8.8.4.4
+- 8.8.8.8
+- 1.1.1.1 cloudflare DNS
+
+
+RPO
+- amount of data in time that you deemed acceptanace to LOSE
+- solution : backup / clone / snapshot 
+
+RTO
+- moment disaster is declared to the moment user re-connect
+- solution: DR
+
+Versioning
+Monday - abc.doc (v1)
+Monday - abc.doc (v2)
+
+Google Drive
+
+vs 
+Google Cloud
+
+Pipeline
+
+Automation
+- 
+vs
+Orchestration Tools/Platform
+- multiple automation
+
+Terraform
+vs
+Ansible
+- playbooks
+- acquired by RH - CentOS/Alma/Oracle Linux
+  -- subscriptions (support/update/upgrade)
+vs
+Jenkins 
+- Pipeline (command/actions)
+vs
+Spinnakers (Netflix)
+
+windows 11
+
+
+ADSL = Streamyx
+300mb/s
+Unifi
+350mb/s
+- Asynchoronous 
+SDSL
+
+Dedicated / lease line
+
+
+
+local monitoring
+- outbound traffic to internet
+
+cloud monitoring
+- inbound  to on-prem
+- ogle/AWS/
+- HYBRID (VPN, interconnect, TIME)
+
+v2c
+- bulk transfer
+- plain text
+v3 
+- encryption
+
+Packet droped at switch
+- firewall/acl
+
+Memory utilization / saturation - 16G/32GB
+- 80%
+
+Load balancer
+- spread traffic across multiple 
 
