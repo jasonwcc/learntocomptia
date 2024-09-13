@@ -593,3 +593,184 @@ Memory utilization / saturation - 16G/32GB
 Load balancer
 - spread traffic across multiple 
 
+segregation
+cluster admin / root
+system administrator
+web admin
+db admin
+db writer
+db reader/viewer
+system viewer
+db owner
+
+
+prime minister
+finance minister
+transport minister
+
+ACL access control list
+- deny  192.168.0.0 0.0.0.255 20,21
+- deny all
+
+WIFI 5/6/7
+802.11AX
+celular 4G/5G/6G
+
+LTE
+
+
+IT
+vs
+OT
+
+
+
+Router Security settings
+- WPA/WPA2
+- WPA2/WPA3
+
+
+HP
+- WPA/WPA2
+
+
+Authentication Server
+RADIUS
+or TACACS+
+
+WATT / VOLT -5 +5
+
+AC / DC
+
+decibel
+
+
+
+
+
+
+
+
+
+PPP 
+- multi-vendor encapsulation protocol in L2 for WAN
+- encryption
+- 3 way handshake
+- serial connection
+
+HDLC
+- encapsulation protocol in L2 for WAN
+- Cisco HDLC
+- serial connection
+
+Frame Relay = TM Streamyx
+- 30-40 MB
+- serial connection
+
+ATM = TM Streamyx
+- 400-500 MB/s
+- serial connection
+
+T-carrier
+- American
+
+E-carrier
+- European
+
+J-carrier
+- Japanese
+
+Remote Access
+
+# of client
+/28n = 4c
+2^4 - 2 =14
+
+remote access/serial/vpn
+/30n = 2c
+2^2 - 2 = 2
+
+
+RFC 1918 (cannot route directly in internet)
+- 10.c.c.c
+  2^24-2=16777214
+- 172.16.x.x - 172.31.x.x
+  2^16-2 * (31-16) = 1 million
+- 192.168.x.x/24  = 65534 ==> 254
+
+IPSEC 
+- a standard security framework used in VPN tunnels
+- 2 modes: Transport and Tunnel
+
+Transport mode
+- client-to-site / remote-to-site VPN
+- encrypt only payload
+- host-to-host communication
+- PC/laptop/workstation 
+vs
+Tunnel mode
+- site-to-site VPN
+- more secure/reliable/preferred
+- used by most of Cloud Service Protocol
+- encrypt everything
+- connecting entire networks
+- need router/VPN gateway
+
+Remote host access
+
+ssh use password to login
+
+ssh-keygen 
+- private <-- passphrase
+- public
+
+Configure passwordless ssh login
+
+
+NAS
+- CIFS
+- NFS
+- over ethernet use IP
+
+SAN
+- FC (fiber channel)
+- FCoE
+- iSCSI (over ethernet use IP)
+- NVMeoFC
+- NVMeoTCP
+
+IaaS
+- pay for what resources that you allocate
+
+PaaS
+- pay for what resources that you utilize
+
+VM10
+- 100xcpu
+- 1TB memory
+- Windows
+
+Monday 9am - 5pm : 10%
+Tue
+
+any amount pay
+
+least principle
+- small permission
+- on progress, add/remove permission
+
+zero trust
+
+examtopics n10-008 
+ n10-009 MCQ + performance-based
+
+1. memorize keyword(s) from the answer
+2. memorize keyword(s) from the question
+3. POE
+  - product knowledge
+  - common sense
+
+ 2 hours
+Jason.wong@trainocate.com
++6012-273-6143
+
